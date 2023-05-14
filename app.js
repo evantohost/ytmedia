@@ -7,7 +7,7 @@ app.get('/download', (req, res) => {
     let url = req.query.url;
     if (url) {
         ytdl.getInfo(url).then(info => {
-            let formats = ytdl.filterFormats(info.formats, 'audioandvideo');
+            let formats = info.formats;
             res.json(formats.map(format => {
                 return {
                     format: format.container,
